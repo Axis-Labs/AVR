@@ -99,5 +99,7 @@ void ADC_init(void)
   ADMUX = VREF_TYPE & 0xFF;
 
 }
+
+
 #pragma used-
 //=======================================================
