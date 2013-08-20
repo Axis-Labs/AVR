@@ -1,34 +1,31 @@
-
-/* EEPROM Load and Store subroutines */
+/* EEPROM Load and Store subroutines v 1.4 */
               /* Writing by Shneider*/
 
 #pragma used+
 
 void EEwrite(unsigned int Address, unsigned char Data)
 {
-/* Wait for completion of previous write */
-while(EECR & (1<<EEPE))
-;
-/* Set up address and Data Registers */
-EEAR = Address;
-EEDR = Data;
-/* Write logical one to EEMPE */
-EECR |= (1<<EEMPE);
-/* Start eeprom write by setting EEPE */
-EECR |= (1<<EEPE);
+     /* Wait for completion of previous write */
+     while(EECR & (1<<EEPE));
+    /* Set up address and Data Registers */
+     EEAR = Address;
+     EEDR = Data;
+    /* Write logical one to EEMPE */
+     EECR |= (1<<EEMPE);
+    /* Start eeprom write by setting EEPE */
+     EECR |= (1<<EEPE);
 }
 
 unsigned char EEread(unsigned int Address)
 {
-/* Wait for completion of previous write */
-while(EECR & (1<<EEPE))
-;
-/* Set up address register */
-EEAR = Address;
-/* Start eeprom read by writing EERE */
-EECR |= (1<<EERE);
-/* Return data from Data Register */
-return EEDR;
+     /* Wait for completion of previous write */
+     while(EECR & (1<<EEPE));
+     /* Set up address register */
+     EEAR = Address;
+     /* Start eeprom read by writing EERE */
+     EECR |= (1<<EERE);
+     /* Return data from Data Register */
+     return EEDR;
 
 }
 
