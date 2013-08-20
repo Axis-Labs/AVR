@@ -25,4 +25,6 @@ DDRB=0x00;
 // State6=T State5=0 State4=T State3=T State2=T State1=T State0=T 
 PORTD=0x00;
 DDRD=0x20;
+#ifdef
+#endif
 }
